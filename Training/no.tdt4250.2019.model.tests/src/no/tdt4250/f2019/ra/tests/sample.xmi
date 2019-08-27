@@ -4,20 +4,15 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ra.ecore="https://ra.ecore"
-    xsi:schemaLocation="https://ra.ecore ra.ecore"
-    name="Dept. of CS">
+    xsi:schemaLocation="https://ra.ecore ra.ecore">
   <staff name="Mathias"
       allocations="//@resourceAllocations.1 //@resourceAllocations.0"/>
-  <courses name="Advanced Software Design"
-      allocations="//@resourceAllocations.0"/>
-  <courses name="IT Project I"
-      allocations="//@resourceAllocations.1"/>
+  <courses name="Advanced Software Design"/>
+  <courses name="IT Project I"/>
   <resourceAllocations
       person="//@staff.0"
-      course="//@courses.0"
-      factor="0.5"/>
+      course="//@courses.0"/>
   <resourceAllocations
       person="//@staff.0"
-      course="//@courses.1"
-      factor="1.0"/>
+      course="//@courses.1"/>
 </ra.ecore:Department>
