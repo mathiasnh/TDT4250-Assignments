@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link no.tdt4250.f2019.ra.Person#getName <em>Name</em>}</li>
  *   <li>{@link no.tdt4250.f2019.ra.Person#getEmployer <em>Employer</em>}</li>
  *   <li>{@link no.tdt4250.f2019.ra.Person#getAllocations <em>Allocations</em>}</li>
+ *   <li>{@link no.tdt4250.f2019.ra.Person#getWorkload <em>Workload</em>}</li>
  * </ul>
  *
  * @see no.tdt4250.f2019.ra.RaPackage#getPerson()
@@ -84,5 +85,16 @@ public interface Person extends EObject {
 	 * @generated
 	 */
 	EList<ResourceAllocation> getAllocations();
+
+	/**
+	 * Returns the value of the '<em><b>Workload</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Workload</em>' attribute.
+	 * @see no.tdt4250.f2019.ra.RaPackage#getPerson_Workload()
+	 * @model transient="true" changeable="false" derived="true"
+	 * @generated
+	 */
+	float getWorkload();
 
 } // Person

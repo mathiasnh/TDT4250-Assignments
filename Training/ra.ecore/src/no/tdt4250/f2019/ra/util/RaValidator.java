@@ -114,7 +114,46 @@ public class RaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCourse(Course course, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(course, diagnostics, context);
+		if (!validate_NoCircularContainment(course, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCourse_courseShouldntHaveTooLittleStaff(course, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the courseShouldntHaveTooLittleStaff constraint of '<em>Course</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COURSE__COURSE_SHOULDNT_HAVE_TOO_LITTLE_STAFF__EEXPRESSION = "aql:self.allocations.factor -> sum() > 0.8";
+
+	/**
+	 * Validates the courseShouldntHaveTooLittleStaff constraint of '<em>Course</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCourse_courseShouldntHaveTooLittleStaff(Course course, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(RaPackage.Literals.COURSE,
+				 course,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/acceleo/query/1.0",
+				 "courseShouldntHaveTooLittleStaff",
+				 COURSE__COURSE_SHOULDNT_HAVE_TOO_LITTLE_STAFF__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**

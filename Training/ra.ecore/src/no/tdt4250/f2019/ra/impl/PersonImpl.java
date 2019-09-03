@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link no.tdt4250.f2019.ra.impl.PersonImpl#getName <em>Name</em>}</li>
  *   <li>{@link no.tdt4250.f2019.ra.impl.PersonImpl#getEmployer <em>Employer</em>}</li>
  *   <li>{@link no.tdt4250.f2019.ra.impl.PersonImpl#getAllocations <em>Allocations</em>}</li>
+ *   <li>{@link no.tdt4250.f2019.ra.impl.PersonImpl#getWorkload <em>Workload</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,6 +70,26 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 	 * @ordered
 	 */
 	protected EList<ResourceAllocation> allocations;
+
+	/**
+	 * The default value of the '{@link #getWorkload() <em>Workload</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWorkload()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final float WORKLOAD_EDEFAULT = 0.0F;
+
+	/**
+	 * The cached value of the '{@link #getWorkload() <em>Workload</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWorkload()
+	 * @generated
+	 * @ordered
+	 */
+	protected float workload = WORKLOAD_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -168,6 +189,15 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public float getWorkload() {
+		return workload;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -226,6 +256,8 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 				return getEmployer();
 			case RaPackage.PERSON__ALLOCATIONS:
 				return getAllocations();
+			case RaPackage.PERSON__WORKLOAD:
+				return getWorkload();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -288,6 +320,8 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 				return getEmployer() != null;
 			case RaPackage.PERSON__ALLOCATIONS:
 				return allocations != null && !allocations.isEmpty();
+			case RaPackage.PERSON__WORKLOAD:
+				return workload != WORKLOAD_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -304,6 +338,8 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", workload: ");
+		result.append(workload);
 		result.append(')');
 		return result.toString();
 	}

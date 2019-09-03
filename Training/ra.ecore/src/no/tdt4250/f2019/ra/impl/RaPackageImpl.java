@@ -264,6 +264,15 @@ public class RaPackageImpl extends EPackageImpl implements RaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPerson_Workload() {
+		return (EAttribute)personEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getResourceAllocation() {
 		return resourceAllocationEClass;
 	}
@@ -340,6 +349,7 @@ public class RaPackageImpl extends EPackageImpl implements RaPackage {
 		createEAttribute(personEClass, PERSON__NAME);
 		createEReference(personEClass, PERSON__EMPLOYER);
 		createEReference(personEClass, PERSON__ALLOCATIONS);
+		createEAttribute(personEClass, PERSON__WORKLOAD);
 
 		resourceAllocationEClass = createEClass(RESOURCE_ALLOCATION);
 		createEReference(resourceAllocationEClass, RESOURCE_ALLOCATION__PERSON);
@@ -398,6 +408,7 @@ public class RaPackageImpl extends EPackageImpl implements RaPackage {
 		initEAttribute(getPerson_Name(), ecorePackage.getEString(), "name", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Employer(), this.getDepartment(), this.getDepartment_Staff(), "employer", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Allocations(), this.getResourceAllocation(), this.getResourceAllocation_Person(), "allocations", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPerson_Workload(), ecorePackage.getEFloat(), "workload", null, 0, 1, Person.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceAllocationEClass, ResourceAllocation.class, "ResourceAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResourceAllocation_Person(), this.getPerson(), this.getPerson_Allocations(), "person", null, 0, 1, ResourceAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -410,6 +421,8 @@ public class RaPackageImpl extends EPackageImpl implements RaPackage {
 		// Create annotations
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
+		// http://www.eclipse.org/acceleo/query/1.0
+		create_1Annotations();
 	}
 
 	/**
@@ -421,10 +434,38 @@ public class RaPackageImpl extends EPackageImpl implements RaPackage {
 	protected void createEcoreAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore";
 		addAnnotation
+		  (this,
+		   source,
+		   new String[] {
+			   "validationDelegates", "http://www.eclipse.org/acceleo/query/1.0"
+		   });
+		addAnnotation
+		  (courseEClass,
+		   source,
+		   new String[] {
+			   "constraints", "courseShouldntHaveTooLittleStaff"
+		   });
+		addAnnotation
 		  (personEClass,
 		   source,
 		   new String[] {
 			   "constraints", "personShouldntHaveTooMuchToDo"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/acceleo/query/1.0</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void create_1Annotations() {
+		String source = "http://www.eclipse.org/acceleo/query/1.0";
+		addAnnotation
+		  (courseEClass,
+		   source,
+		   new String[] {
+			   "courseShouldntHaveTooLittleStaff", "aql:self.allocations.factor -> sum() > 0.8"
 		   });
 	}
 

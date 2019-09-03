@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see no.tdt4250.f2019.ra.RaFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore validationDelegates='http://www.eclipse.org/acceleo/query/1.0'"
  * @generated
  */
 public interface RaPackage extends EPackage {
@@ -232,13 +233,22 @@ public interface RaPackage extends EPackage {
 	int PERSON__ALLOCATIONS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Workload</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__WORKLOAD = 3;
+
+	/**
 	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 3;
+	int PERSON_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Person</em>' class.
@@ -467,6 +477,17 @@ public interface RaPackage extends EPackage {
 	EReference getPerson_Allocations();
 
 	/**
+	 * Returns the meta object for the attribute '{@link no.tdt4250.f2019.ra.Person#getWorkload <em>Workload</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Workload</em>'.
+	 * @see no.tdt4250.f2019.ra.Person#getWorkload()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EAttribute getPerson_Workload();
+
+	/**
 	 * Returns the meta object for class '{@link no.tdt4250.f2019.ra.ResourceAllocation <em>Resource Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -657,6 +678,14 @@ public interface RaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PERSON__ALLOCATIONS = eINSTANCE.getPerson_Allocations();
+
+		/**
+		 * The meta object literal for the '<em><b>Workload</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSON__WORKLOAD = eINSTANCE.getPerson_Workload();
 
 		/**
 		 * The meta object literal for the '{@link no.tdt4250.f2019.ra.impl.ResourceAllocationImpl <em>Resource Allocation</em>}' class.

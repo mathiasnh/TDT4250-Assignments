@@ -21,7 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see no.tdt4250.f2019.ra.RaPackage#getCourse()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='courseShouldntHaveTooLittleStaff'"
+ *        annotation="http://www.eclipse.org/acceleo/query/1.0 courseShouldntHaveTooLittleStaff='aql:self.allocations.factor -&gt; sum() &gt; 0.8'"
  * @generated
  */
 public interface Course extends EObject {
