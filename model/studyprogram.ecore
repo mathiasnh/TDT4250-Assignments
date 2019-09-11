@@ -87,14 +87,6 @@
         eOpposite="#//Department/courses"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="credits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloatObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="SemesterType">
-    <eLiterals name="Fall" literal="Fall"/>
-    <eLiterals name="Spring" value="1" literal="Spring"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="CourseType">
-    <eLiterals name="Obligatory" literal="Obligatory"/>
-    <eLiterals name="Elective" value="1" literal="Elective"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ElectiveCourses">
     <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="#//Program"
         eOpposite="#//Program/electiveCourses"/>
@@ -106,5 +98,13 @@
         eOpposite="#//Program/obligatoryCourses"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="courses" upperBound="-1"
         eType="#//Course"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SemesterType">
+    <eLiterals name="Fall" literal="Fall"/>
+    <eLiterals name="Spring" value="1" literal="Spring"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CourseType">
+    <eLiterals name="Obligatory" literal="Obligatory"/>
+    <eLiterals name="Elective" value="1" literal="Elective"/>
   </eClassifiers>
 </ecore:EPackage>

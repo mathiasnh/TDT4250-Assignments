@@ -2,6 +2,7 @@
  */
 package studyprogram.util;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -322,21 +323,19 @@ public class StudyprogramValidator extends EObjectValidator {
 	 * Validates the obligatorySlotShouldNotContainElectives constraint of '<em>Semester Course</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @NOT generated
 	 */
 	public boolean validateSemesterCourse_obligatorySlotShouldNotContainElectives(SemesterCourse semesterCourse, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean courseSlotInvalid = false;
+		boolean isSlotInvalid = false;
 		
-		EList<Course> coursesInSlot = semesterCourse.getCourse();
+		EList<Course> slot = semesterCourse.getCourse();
 		EList<Course> electives = semesterCourse.getSemester().getYear().getStudyPlan().getProgram().getElectiveCourses().getCourses();
-		for (Course c : coursesInSlot) {
-			if (semesterCourse.getType().getLiteral().equals("Obligatory") && electives.contains(c)) {
-				courseSlotInvalid = true;
-			}
+		
+		for (Course c : electives) {
+			isSlotInvalid = slot.contains(c);
 		}
 		
-		
-		if (courseSlotInvalid) {
+		if (isSlotInvalid) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -357,19 +356,19 @@ public class StudyprogramValidator extends EObjectValidator {
 	 * Validates the electiveSlotShouldNotContainObligatory constraint of '<em>Semester Course</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @NOT generated
 	 */
 	public boolean validateSemesterCourse_electiveSlotShouldNotContainObligatory(SemesterCourse semesterCourse, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean courseSlotInvalid = false;
+		boolean isSlotInvalid = false;
 		
-		EList<Course> coursesInSlot = semesterCourse.getCourse();
+		EList<Course> slot = semesterCourse.getCourse();
 		EList<Course> obligatories = semesterCourse.getSemester().getYear().getStudyPlan().getProgram().getObligatoryCourses().getCourses();
-		for (Course c : coursesInSlot) {
-			if (semesterCourse.getType().getLiteral().equals("Elective") && obligatories.contains(c)) {
-				courseSlotInvalid = true;
-			}
+		
+		for (Course c : obligatories) {
+			isSlotInvalid = slot.contains(c);
 		}
-		if (courseSlotInvalid) {
+		
+		if (isSlotInvalid) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -418,14 +417,15 @@ public class StudyprogramValidator extends EObjectValidator {
 	 * Validates the courseShouldHaveCorrectAmountOfCredits constraint of '<em>Course</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @NOT generated
 	 */
 	public boolean validateCourse_courseShouldHaveCorrectAmountOfCredits(Course course, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO implement the constraint
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		ArrayList<Float> validCredits = new ArrayList<Float>();
+		validCredits.add((float) 5.0);
+		validCredits.add((float) 7.5);
+		validCredits.add((float) 10.0);
+		
+		if (validCredits.contains(course.getCredits())) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
