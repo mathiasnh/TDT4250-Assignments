@@ -172,7 +172,6 @@ public class StudyprogramValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(year, diagnostics, context);
 		if (result || diagnostics != null) result &= validateYear_shouldHaveOneFallSemester(year, diagnostics, context);
 		if (result || diagnostics != null) result &= validateYear_shouldHaveOneSpringSemester(year, diagnostics, context);
-		if (result || diagnostics != null) result &= validateYear_shouldHaveEnoughCredits(year, diagnostics, context);
 		return result;
 	}
 
@@ -229,35 +228,6 @@ public class StudyprogramValidator extends EObjectValidator {
 				 "http://www.eclipse.org/acceleo/query/1.0",
 				 "shouldHaveOneSpringSemester",
 				 YEAR__SHOULD_HAVE_ONE_SPRING_SEMESTER__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
-	}
-
-	/**
-	 * The cached validation expression for the shouldHaveEnoughCredits constraint of '<em>Year</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String YEAR__SHOULD_HAVE_ENOUGH_CREDITS__EEXPRESSION = "aql:self.semesters.semesterCourses.course.credits -> sum() >= 60.0";
-
-	/**
-	 * Validates the shouldHaveEnoughCredits constraint of '<em>Year</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateYear_shouldHaveEnoughCredits(Year year, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(StudyprogramPackage.Literals.YEAR,
-				 year,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/acceleo/query/1.0",
-				 "shouldHaveEnoughCredits",
-				 YEAR__SHOULD_HAVE_ENOUGH_CREDITS__EEXPRESSION,
 				 Diagnostic.ERROR,
 				 DIAGNOSTIC_SOURCE,
 				 0);

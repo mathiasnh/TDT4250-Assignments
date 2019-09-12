@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see studyprogram.StudyprogramPackage#getYear()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='shouldHaveOneFallSemester shouldHaveOneSpringSemester shouldHaveEnoughCredits'"
- *        annotation="http://www.eclipse.org/acceleo/query/1.0 shouldHaveOneFallSemester='aql:self.semesters.type.value -&gt; count(0) == 1' shouldHaveOneSpringSemester='aql:self.semesters.type.value -&gt; count(1) == 1' shouldHaveEnoughCredits='aql:self.semesters.semesterCourses.course.credits -&gt; sum() &gt;= 60.0'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='shouldHaveOneFallSemester shouldHaveOneSpringSemester'"
+ *        annotation="http://www.eclipse.org/acceleo/query/1.0 shouldHaveOneFallSemester='aql:self.semesters.type.value -&gt; count(0) == 1' shouldHaveOneSpringSemester='aql:self.semesters.type.value -&gt; count(1) == 1'"
  * @generated
  */
 public interface Year extends EObject {

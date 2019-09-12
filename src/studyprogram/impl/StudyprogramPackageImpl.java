@@ -853,7 +853,7 @@ public class StudyprogramPackageImpl extends EPackageImpl implements Studyprogra
 		  (yearEClass,
 		   source,
 		   new String[] {
-			   "constraints", "shouldHaveOneFallSemester shouldHaveOneSpringSemester shouldHaveEnoughCredits"
+			   "constraints", "shouldHaveOneFallSemester shouldHaveOneSpringSemester"
 		   });
 		addAnnotation
 		  (semesterCourseEClass,
@@ -882,8 +882,7 @@ public class StudyprogramPackageImpl extends EPackageImpl implements Studyprogra
 		   source,
 		   new String[] {
 			   "shouldHaveOneFallSemester", "aql:self.semesters.type.value -> count(0) == 1",
-			   "shouldHaveOneSpringSemester", "aql:self.semesters.type.value -> count(1) == 1",
-			   "shouldHaveEnoughCredits", "aql:self.semesters.semesterCourses.course.credits -> sum() >= 60.0"
+			   "shouldHaveOneSpringSemester", "aql:self.semesters.type.value -> count(1) == 1"
 		   });
 	}
 
